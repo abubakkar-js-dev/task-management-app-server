@@ -13,10 +13,15 @@ const taskSchema = new mongoose.Schema({
         maxlength: 200,
     },
     category: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Category",
-        required: true,
+        type: String,
+        enum: ["To-Do","In Progress", "Done"],
+        default: "To-Do"
 
+    },
+    userId: {
+        type: String,
+        require: true,
+        unique: true
     }
 },{timestamps: true})
 
