@@ -1,8 +1,11 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const connectMongoDb = require('./config/db');
 const app = express();
 const port = process.env.PORT || 5000;
+
+const taskRouter = require('./routes/tasks');
 
 
 
@@ -14,11 +17,11 @@ app.use(express.json());
 
 // database connection
 
-
+connectMongoDb(process.env.MONGODB_URL);
 
 
 // api routes
-
+app.use('/tasks',taskRouter);
 
 
 
