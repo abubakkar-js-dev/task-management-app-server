@@ -6,6 +6,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 const taskRouter = require('./routes/tasks');
+const userRouter = require('./routes/users');
 
 
 
@@ -22,6 +23,7 @@ connectMongoDb(process.env.MONGODB_URL);
 
 // api routes
 app.use('/tasks',taskRouter);
+app.use('/users',userRouter);
 
 
 
