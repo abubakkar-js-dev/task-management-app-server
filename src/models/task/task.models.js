@@ -21,7 +21,11 @@ const taskSchema = new mongoose.Schema({
     userId: {
         type: String,
         require: true,
-        unique: true
+    },
+    position: {
+        type:Number,
+        require: true,
+        default: 0,
     }
 },{timestamps: true})
 
