@@ -19,7 +19,7 @@ This is the backend for the **Task Management Application**, built with **Node.j
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/abu-bakkar-js-dev/task-management-server.git
+   git clone https://github.com/abu-bakkar-js-dev/task-management-app-server.git
    ```
 2. Navigate to the project directory:
    ```sh

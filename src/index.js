@@ -13,7 +13,7 @@ const userRouter = require('./routes/users');
 // middlewares
 
 app.use(cors({
-    origin: ['http://localhost:5173',]
+    origin: ['https://task-management-app-client-five.vercel.app','http://localhost:5173',]
 }));
 app.use(express.json());
 
