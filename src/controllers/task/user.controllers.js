@@ -17,7 +17,7 @@ const addUser = async(req,res)=>{
 }
 
 
-const getUsers = async(greq,res)=>{
+const getUsers = async(req,res)=>{
     try{
         const users = await User.find();
         res.status(200).send(users);

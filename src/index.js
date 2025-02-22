@@ -12,13 +12,22 @@ const userRouter = require('./routes/users');
 
 // middlewares
 
-app.use(cors());
+app.use(cors({
+    origin: ['http://localhost:5173',]
+}));
 app.use(express.json());
 
 
 // database connection
 
-connectMongoDb(process.env.MONGODB_URL);
+connectMongoDb(process.env.MONGODB_URL)
+.then(()=>{
+    app.listen(port,()=>{
+        console.log(`Server is listening on port: ${port}`);
+    })
+}).catch((err)=>{
+    console.log("Error in connecting to the database",err);
+})
 
 
 // api routes
@@ -32,8 +41,4 @@ app.use('/users',userRouter);
 app.get('/',(req,res)=>{
     console.log('The server is Running.');
     res.send('The server is working now');
-})
-
-app.listen(port,()=>{
-    console.log(`Server is listening on port: ${port}`);
 })

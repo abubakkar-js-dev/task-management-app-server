@@ -80,18 +80,26 @@ const deleteTaskById = async (req, res) => {
     res.status(500).send({ message: err.message });
   }
 };
-const updateTaskPositoins = async (req, res) => {
+const updateTaskPositions = async (req, res) => {
   try {
-    const { tasks } = req.body;
+      const { tasks } = req.body;
 
-    const updatePromises = tasks.map((task) => {
-      Task.findByIdAndUpdate(task._id, { position: task.position });
-    });
+      // Use Promise.all to await all update operations
+      const updatePromises = tasks.map((task) =>
+          Task.findByIdAndUpdate(
+              task._id,
+              { position: task.position },
+              { new: true } // Return the updated document (optional)
+          )
+      );
 
-    await Promise.all(updatePromises);
-    res.status(200).send({ message: "Task Positions updated successfully" });
+      // Await all updates
+      await Promise.all(updatePromises);
+
+      res.status(200).send({ message: "Task positions updated successfully" });
   } catch (err) {
-    res.status(500).send({ message: err.message });
+      console.error("Error updating task positions:", err);
+      res.status(500).send({ message: err.message });
   }
 };
 
@@ -101,5 +109,5 @@ module.exports = {
   getTaskById,
   updateTask,
   deleteTaskById,
-  updateTaskPositoins,
+  updateTaskPositions,
 };

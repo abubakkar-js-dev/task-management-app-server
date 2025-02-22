@@ -5,7 +5,7 @@ const {
   updateTask,
   getTaskById,
   deleteTaskById,
-  updateTaskPositoins,
+  updateTaskPositions,
 } = require("../controllers/task/task.controllers");
 const router = express.Router();
 
@@ -14,6 +14,6 @@ router.get("/", getTasks);
 router.get("/:id", getTaskById);
 router.put("/:id", updateTask);
 router.delete("/:id",deleteTaskById);
-router.put("/update-task-position",updateTaskPositoins);
+router.post("/update-positions",updateTaskPositions);
 
 module.exports = router;
